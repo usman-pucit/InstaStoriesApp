@@ -1,5 +1,5 @@
 //
-//  InstaStoriesAppApp.swift
+//  InstaStoriesApp.swift
 //  InstaStoriesApp
 //
 //  Created by Usman on 17.05.25.
@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct InstaStoriesAppApp: App {
+struct InstaStoriesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StoryListView()
         }
     }
 }

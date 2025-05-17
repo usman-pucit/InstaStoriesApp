@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  StoryListView.swift
 //  InstaStoriesApp
 //
 //  Created by Usman on 17.05.25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct StoryListView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    StoryListView()
 }
