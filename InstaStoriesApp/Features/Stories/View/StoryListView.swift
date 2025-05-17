@@ -35,11 +35,7 @@ struct StoryListView: View {
         case .error(let error):
             errorView(with: error)
         case .result(let stories):
-            StoriesView(stories: stories, onAppear: { story in
-                Task {
-                    await viewModel.loadMoreItemsIfNeeded(currentItem: story)
-                }
-            })
+            StoriesView(stories: stories, viewModel: viewModel)
         case .empty:
             emptyView
         }
@@ -62,23 +58,28 @@ struct StoryListView: View {
 // MARK: - Private Views
 private struct StoriesView: View {
     private let stories: [UI.Story.User]
-    private var onAppear: (UI.Story.User) -> Void
+    @State private var viewModel: StoryListViewModel
     
     init(
         stories: [UI.Story.User],
-        onAppear: @escaping (UI.Story.User) -> Void
+        viewModel: StoryListViewModel
     ) {
         self.stories = stories
-        self.onAppear = onAppear
+        self.viewModel = viewModel
     }
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 12) {
                 ForEach(stories) { story in
-                    StoryCell(story: story, isSeen: false)
+                    StoryCell(story: story, isSeen:  viewModel.seenStories.contains(story.id))
                         .onAppear {
-                            onAppear(story)
+                            Task {
+                                await viewModel.loadMoreItemsIfNeeded(currentItem: story)
+                            }
+                        }
+                        .onTapGesture {
+                            viewModel.markStoryAsSeen(id: story.id)
                         }
                 }
             }

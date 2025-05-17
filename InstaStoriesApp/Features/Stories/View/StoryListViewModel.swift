@@ -40,7 +40,7 @@ final class StoryListViewModel {
     private let useCase: StoryListUseCaseType
     private var currentPage = 0
     private var totalPages = 0
-    
+    private(set) var seenStories: Set<Int> = []
     private var canLoadMorePages = true
     private var totalStories: [UI.Story.User] = []
     
@@ -79,22 +79,32 @@ extension StoryListViewModel: StoryListViewModelType {
     }
     
     func loadMoreItemsIfNeeded(currentItem: UI.Story.User?) async {
-        // Implement pagination logic
-        guard let item = currentItem,
-              item.id == totalStories.last?.id,
-              canLoadMorePages
-        else {
-            return
+        // Check if the current item is the last one in the list
+        // and if we can load more pages
+        if let item = currentItem,
+           let last = totalStories.last,
+           item == last,
+           canLoadMorePages
+         {
+            currentPage += 1
+            await fetchStories()
         }
-        
-        currentPage += 1
-        await fetchStories()
     }
     
+    // MARK: - Refresh
     func refresh() async {
         currentPage = 1
         canLoadMorePages = true
         totalStories = []
         await fetchStories()
+    }
+    
+    // MARK: - Seen Stories
+    func isStorySeen(id: Int) -> Bool {
+        seenStories.contains(id)
+    }
+    
+    func markStoryAsSeen(id: Int) {
+        seenStories.insert(id)
     }
 }

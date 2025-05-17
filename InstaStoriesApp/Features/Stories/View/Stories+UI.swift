@@ -20,6 +20,12 @@ extension UI.Story {
     }
 }
 
+extension UI.Story.User: Equatable {
+    static func == (lhs: UI.Story.User, rhs: UI.Story.User) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 // MARK: - Normalizable
 
 extension Domain.Story.Response.Page.User: Normalizable {
