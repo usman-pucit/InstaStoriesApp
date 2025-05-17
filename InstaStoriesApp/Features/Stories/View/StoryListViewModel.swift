@@ -42,8 +42,7 @@ extension StoryListViewModel: StoryListViewModelType {
         
         do {
             let stories = try await useCase.fetchStories()
-            let pages = stories.flatMap { $0.pages }
-            let users = pages.flatMap { $0.users }
+            let users = stories.flatMap { $0.users }
             let normalizedUsers = users.map { $0.normalize()} // Normalize the response
             viewState = .result(normalizedUsers)
         } catch {

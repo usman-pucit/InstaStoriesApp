@@ -1,9 +1,20 @@
 import Foundation
 
-enum JSONError: Error {
+enum JSONError: Error, LocalizedError {
     case fileNotFound
     case decodingError
     case invalidData
+    
+    public var errorDescription: String? {
+        switch self {
+        case .fileNotFound:
+            "The file was not found."
+        case .decodingError:
+            "Failed to decode the JSON data."
+        case .invalidData:
+            "Unexpected data format."
+        }
+    }
 }
 
 protocol JSONReaderType {

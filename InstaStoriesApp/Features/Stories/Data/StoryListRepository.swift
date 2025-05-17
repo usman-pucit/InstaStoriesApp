@@ -9,7 +9,7 @@ import Foundation
 
 // Define a protocol for the use case
 protocol StoryListRepositoryType {
-    func fetchStories() async throws -> [Domain.Story.Response]
+    func fetchStories() async throws -> [Domain.Story.Response.Page]
 }
 
 // MARK: - UseCase
@@ -24,13 +24,13 @@ final class StoryListRepository {
 }
 
 extension StoryListRepository: StoryListRepositoryType {
-    func fetchStories() async throws -> [Domain.Story.Response] {
+    func fetchStories() async throws -> [Domain.Story.Response.Page] {
         return try await withCheckedThrowingContinuation { continuation in
             DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
                 do {
-                    let stories: [API.Story.Response] = try self.jsonReader.load("story_list")
-                    let normalizedStories = stories.map { $0.normalize() } // Normalize the response
-                    continuation.resume(returning: normalizedStories)
+                    let stories: API.Story.Response = try self.jsonReader.load("story_list")
+                    let normalizedStories = stories.normalize() // Normalize the response
+                    continuation.resume(returning: normalizedStories.pages)
                 } catch {
                     continuation.resume(throwing: error)
                 }

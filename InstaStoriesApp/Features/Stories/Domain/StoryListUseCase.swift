@@ -9,7 +9,7 @@ import Foundation
 
 // Define a protocol for the use case
 protocol StoryListUseCaseType {
-    func fetchStories() async throws -> [Domain.Story.Response]
+    func fetchStories() async throws -> [Domain.Story.Response.Page]
 }
 
 // MARK: - UseCase
@@ -24,7 +24,7 @@ final class StoryListUseCase {
 }
 
 extension StoryListUseCase: StoryListUseCaseType {
-    func fetchStories() async throws -> [Domain.Story.Response] {
+    func fetchStories() async throws -> [Domain.Story.Response.Page] {
         try await repository.fetchStories()
     }
 }
