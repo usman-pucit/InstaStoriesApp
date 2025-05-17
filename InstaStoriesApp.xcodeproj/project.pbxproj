@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		965834EC2DD8C48B0020387C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 965834EB2DD8C48B0020387C /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		965834322DD88B160020387C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		965834212DD88B140020387C /* InstaStoriesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaStoriesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		965834312DD88B160020387C /* InstaStoriesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaStoriesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9658343B2DD88B160020387C /* InstaStoriesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaStoriesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		965834EB2DD8C48B0020387C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		965834182DD88B140020387C = {
 			isa = PBXGroup;
 			children = (
+				965834EB2DD8C48B0020387C /* README.md */,
 				965834232DD88B140020387C /* InstaStoriesApp */,
 				965834342DD88B160020387C /* InstaStoriesAppTests */,
 				9658343E2DD88B160020387C /* InstaStoriesAppUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965834EC2DD8C48B0020387C /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
