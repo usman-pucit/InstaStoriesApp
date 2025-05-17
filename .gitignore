@@ -17,6 +17,12 @@ xcuserdata/
 timeline.xctimeline
 playground.xcworkspace
 
+## User Specific Data
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcshareddata/
+*.xcodeproj/xcshareddata/
+
 # Swift Package Manager
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
@@ -30,6 +36,7 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
+.DS_Store
 
 # CocoaPods
 #
